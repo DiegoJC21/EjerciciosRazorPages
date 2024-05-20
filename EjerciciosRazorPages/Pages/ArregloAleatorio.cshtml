@@ -1,0 +1,49 @@
+﻿@page
+@model EjerciciosRazorPages.Pages.EstadisticasNumerosModel
+@{
+    ViewData["Title"] = "Estadísticas de Números Aleatorios";
+}
+
+<h2>Estadísticas de Números Aleatorios</h2>
+
+<div>
+    <h3>Números Aleatorios (original):</h3>
+    <p>@string.Join(", ", Model.NumerosAleatorios)</p>
+</div>
+
+<div>
+    <h3>Números Aleatorios (ordenados):</h3>
+    <p>@string.Join(", ", Model.NumerosAleatorios.OrderBy(x => x))</p>
+</div>
+
+<div>
+    <h3>Suma:</h3>
+    <p>@Model.Suma</p>
+</div>
+
+<div>
+    <h3>Promedio:</h3>
+    <p>@Model.Promedio</p>
+</div>
+
+<div>
+    <h3>Moda:</h3>
+    @if (Model.Moda.Count == 1)
+    {
+        <p>@Model.Moda.First()</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var moda in Model.Moda)
+            {
+                <li>@moda</li>
+            }
+        </ul>
+    }
+</div>
+
+<div>
+    <h3>Mediana:</h3>
+    <p>@Model.Mediana</p>
+</div>

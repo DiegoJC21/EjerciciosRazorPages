@@ -1,0 +1,38 @@
+﻿@page
+@model EjerciciosRazorPages.Pages.CifradoCesarModel
+@{
+    ViewData["Title"] = "Cifrado César";
+}
+
+<h2>Cifrado César</h2>
+
+<form method="post">
+    <div>
+        <label for="mensajeOriginal">Mensaje Original:</label>
+        <input type="text" id="mensajeOriginal" name="MensajeOriginal" asp-for="MensajeOriginal" />
+    </div>
+    <div>
+        <label for="desplazamiento">Desplazamiento (n):</label>
+        <input type="number" id="desplazamiento" name="Desplazamiento" asp-for="Desplazamiento" />
+    </div>
+    <div>
+        <button type="submit" asp-page-handler="Cifrar">Cifrar</button>
+        <button type="submit" asp-page-handler="Descifrar">Descifrar</button>
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.MensajeCifrado))
+{
+    <div>
+        <h3>Mensaje Cifrado:</h3>
+        <p>@Model.MensajeCifrado</p>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.MensajeDescifrado))
+{
+    <div>
+        <h3>Mensaje Descifrado:</h3>
+        <p>@Model.MensajeDescifrado</p>
+    </div>
+}
